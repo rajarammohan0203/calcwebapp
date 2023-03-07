@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/rchidana/calcwebapp.git'    
+                git url: 'https://github.com/rajarammohan0203/calcwebapp.git'    
 		            echo "Code Checked-out Successfully!!";
             }
         }
         
         stage('Package') {
             steps {
-                bat 'mvn package'    
+                sh 'mvn package'    
 		            echo "Maven Package Goal Executed Successfully!";
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
 		// Change this as per your Jenkins Configuration
                 withSonarQubeEnv('SonarQube') {
-                    bat 'mvn package sonar:sonar'
+                    sh 'mvn package sonar:sonar'
                 }
             }
         }
